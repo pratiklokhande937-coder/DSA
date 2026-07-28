@@ -38,13 +38,34 @@
 //         }
 //     }
 // }
-import java.util.*;
-public class oncenumberapperar {
-    public static void main(String[]args){
+// import java.util.*;
+// public class oncenumberapperar {
+//     public static void main(String[]args){
+//         int arr[] = new int[]{1,1,2,3,3,4,4};
+//                 Map<Integer,Integer> mp = new HashMap<>();
+
+//         for(int i = 0;i<arr.length;i++){
+//             mp.put(arr[i],mp.getOrDefault(arr[i],0) +1);
+//         }
+        
+//             for(Map.Entry<Integer,Integer> entry : mp.entrySet()){
+//              if(entry.getValue() == 1){
+//                 System.out.print(entry.getKey());
+//              }
+//             }
+//         }
+//     }
+
+//optimal  (xor)
+
+ public class oncenumberapperar {
+    public static void main(String []args){
         int arr[] = new int[]{1,1,2,3,3,4,4};
-        Map<Integer,Integer> mp = new HashMap<>();
-        for(int i = 0;i<arr.length;i++){
-            mp.put(arr[i],mp.getOrDefault(arr[i],0) +1);
-        }
+        int xor= 0;
+        for(int i=0;i<arr.length;i++){
+            xor = xor ^ arr[i];
+        }System.out.print(xor);
     }
-}
+ }
+
+
