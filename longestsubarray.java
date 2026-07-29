@@ -42,25 +42,54 @@
 // }
 
 //better solution using hashmap
+// import java.util.*;
+//  public class longestsubarray {
+//     public static void main(String [] args){
+//         int arr [] = new int []{1,2,3,1,1,1,1,4,2,3};
+//          Map<Integer,Integer> mp = new HashMap<>();
+//          int sum = 0;
+//          int maxlength = 0;
+//          int target = 3;
+//          for(int i = 0;i<arr.length;i++){
+//             sum = sum + arr[i];
+//             if(sum == target ){
+//                 maxlength = Math.max(maxlength, i+1);
+//             }
+//             int rem = sum - target;
+//             if(mp.containsKey(rem)){
+//                 int length = i - mp.get(rem);
+//             maxlength = Math.max(maxlength,length); 
+//             }
+//          }
+//          System.out.print(maxlength);
+//     }
+// }
+
+// optimized sol
 import java.util.*;
  public class longestsubarray {
-    public static void main(String [] args){
-        int arr [] = new int []{1,2,3,1,1,1,1,4,2,3};
-         Map<Integer,Integer> mp = new HashMap<>();
-         int sum = 0;
-         int maxlength = 0;
-         int target = 3;
-         for(int i = 0;i<arr.length;i++){
-            sum = sum + arr[i];
-            if(sum == target ){
-                maxlength = Math.max(maxlength, i+1);
+    public static void main(String[]args){
+        int arr[] = new int []{1,2,3,1,1,1,1,3,3};
+        int left = 0;
+        int right = 0;
+        int sum = arr[0];
+        int maxlength = 0;
+        int n = arr.length;
+        int target = 6;
+
+
+        while(right < n){
+            while(left <= right && sum > target){
+                sum = sum - arr[left];
+                left ++;
             }
-            int rem = sum - target;
-            if(mp.containsKey(rem)){
-                int length = i - mp.get(rem);
-            maxlength = Math.max(maxlength,length); 
+            if(sum == target){
+                maxlength = Math.max(maxlength,right - left + 1);
             }
-         }
-         System.out.print(maxlength);
+            right++;
+            if(right < n) sum = sum + arr[right];
+
+        }
+        System.out.print(maxlength);
     }
-}
+ }
