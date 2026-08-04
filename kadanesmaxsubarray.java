@@ -43,14 +43,23 @@
 //optimize approach
 public class kadanesmaxsubarray {
      public static void main(String []args){
+          
       int arr[] = new int []{-2,-3,4,-1,-2,1,5,-3};
       int sum = 0;
       int max = Integer.MIN_VALUE;
+      int ansstart = -1;
+      int ansend = -1;
+      int start = 0;
       for(int i = 0; i < arr.length; i++){
+            if(sum == 0)  start = i;
           sum = sum + arr[i];
 
           if(sum > max){
                max = sum;
+          
+               ansstart = start;
+                ansend = i;
+               
           }
           if(sum < 0){
                sum = 0;
@@ -61,5 +70,9 @@ public class kadanesmaxsubarray {
           // }
       }
       System.out.print(max);
+      System.out.print("subarray is");
+      for(int i = ansstart;i <= ansend; i++){
+          System.out.print(arr[i]);
+      }
      }
 }
